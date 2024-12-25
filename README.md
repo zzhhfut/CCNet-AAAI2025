@@ -37,6 +37,7 @@ python ./eval.py ./configs/CCNet_unav100.yaml ./ckpt/CCNet_unav100_reproduce
 ```
 
 ## Citation
+```
 @ARTICLE{2024arXiv241212628Z,
        author = {{Zhou}, Ziheng and {Zhou}, Jinxing and {Qian}, Wei and {Tang}, Shengeng and {Chang}, Xiaojun and {Guo}, Dan},
         title = "{Dense Audio-Visual Event Localization under Cross-Modal Consistency and Multi-Temporal Granularity Collaboration}",
@@ -45,6 +46,7 @@ python ./eval.py ./configs/CCNet_unav100.yaml ./ckpt/CCNet_unav100_reproduce
         pages = {arXiv:2412.12628},
           doi = {10.48550/arXiv.2412.12628},
 }
+```
 
 ## Acknowledgement
 Thanks for the poineering work [UnAV](https://github.com/ttgeng233/UnAV). The video and audio features were extracted using [ONE-PEACE](https://github.com/OFA-Sys/ONE-PEACE), following [UniAV](https://github.com/ttgeng233/UniAV). Our model was implemented based on [ActionFormer](https://github.com/happyharrycn/actionformer_release) and [UnAV](https://github.com/ttgeng233/UnAV). We thank the authors for their excellent efforts. If you use our code, please also consider to cite their works.
