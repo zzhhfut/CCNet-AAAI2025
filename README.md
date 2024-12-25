@@ -1,16 +1,15 @@
 # Dense Audio-Visual Event Localization under Cross-Modal Consistency and Multi-Temporal Granularity Collaboration
-This repository contains code for AAAI2025 paper "Dense Audio-Visual Event Localization under Cross-Modal Consistency and Multi-Temporal Granularity Collaboration". This paper introduce a novel CCNet, comprising two core modules: the Cross-Modal Consistency Collaboration (CMCC) and the Multi-Temporal Granularity Collaboration (MTGC), resulting in a new state-of-the-art performance in dense audio-visual event localization.
-
+This repository contains the official code for our AAAI-2025 paper "Dense Audio-Visual Event Localization under Cross-Modal Consistency and Multi-Temporal Granularity Collaboration". 
 [arvix page](https://arxiv.org/abs/2412.12628)
 
 ## Requirements
-The implemetation is based on PyTorch. Follow [INSTALL.md](INSTALL.md) to install required dependencies.
+The implementation is based on PyTorch. Please follow [INSTALL.md](INSTALL.md) to install the required dependencies.
 
-## Data preparation
+## Data Preparation
 <!-- #### Download features and annotations -->
-- Download UnAV-100 from [this link](https://pan.baidu.com/s/1uBRdq6mXTfnRODMbZ0-QnA?pwd=zyfm) (pwd: zyfm).  The audio and visual features are extracted from the audio and visual encoder of [ONE-PEACE](https://github.com/OFA-Sys/ONE-PEACE), respectively, where the visual encoder is finetuned on Kinetics-400.  
+Please follow the repo. of [UnAV](https://github.com/ttgeng233/UnAV) to download the audiovisual features and annotations of UnAV-100 dataset. You may download it directly using [this link](https://pan.baidu.com/s/1uBRdq6mXTfnRODMbZ0-QnA?pwd=zyfm) (pwd: zyfm). Notably, our SOTA model utilizes the [ONE-PEACE](https://github.com/OFA-Sys/ONE-PEACE) to extract audiovisual features.
 
-After downloading, unpack files under `./data`. The folder structure should look like:
+After downloading the dataset, unpack the files under `./data`. The folder structure should look like this:
 ```
 This folder
 │   README.md
@@ -24,8 +23,8 @@ This folder
 ```
 
 ## Training 
-Run `./train.py` to jointly train CCNet on UnAV-100.
-For UnAV-100 dataset, train using the following command:
+Run `./train.py` to train CCNet on UnAV-100.
+For the UnAV-100 dataset, train using the following command:
 ```
 python ./train.py ./configs/CCNet_unav100.yaml --output reproduce
 ```
@@ -38,15 +37,13 @@ python ./eval.py ./configs/CCNet_unav100.yaml ./ckpt/CCNet_unav100_reproduce
 
 ## Citation
 ```
-@ARTICLE{2024arXiv241212628Z,
-       author = {{Zhou}, Ziheng and {Zhou}, Jinxing and {Qian}, Wei and {Tang}, Shengeng and {Chang}, Xiaojun and {Guo}, Dan},
-        title = "{Dense Audio-Visual Event Localization under Cross-Modal Consistency and Multi-Temporal Granularity Collaboration}",
-      journal = {arXiv e-prints},
-         year = 2024,
-        pages = {arXiv:2412.12628},
-          doi = {10.48550/arXiv.2412.12628},
+@inproceedings{zhou2024dense,
+  title={Dense Audio-Visual Event Localization under Cross-Modal Consistency and Multi-Temporal Granularity Collaboration},
+  author={Zhou, Ziheng and Zhou, Jinxing and Qian, Wei and Tang, Shengeng and Chang, Xiaojun and Guo, Dan},
+  booktitle={Proceedings of the AAAI Conference on Artificial Intelligence (AAAI)},
+  year={2025}
 }
 ```
 
 ## Acknowledgement
-Thanks for the poineering work [UnAV](https://github.com/ttgeng233/UnAV). The video and audio features were extracted using [ONE-PEACE](https://github.com/OFA-Sys/ONE-PEACE), following [UniAV](https://github.com/ttgeng233/UniAV). Our model was implemented based on [ActionFormer](https://github.com/happyharrycn/actionformer_release) and [UnAV](https://github.com/ttgeng233/UnAV). We thank the authors for their excellent efforts. If you use our code, please also consider to cite their works.
+Our codes are developed based on the codebase of pioneering work [UnAV](https://github.com/ttgeng233/UnAV). We thank the authors for their excellent efforts. The computation of our model is completed on the HPC Platform of Hefei University of Technology.
