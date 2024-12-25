@@ -1,6 +1,7 @@
 # Dense Audio-Visual Event Localization under Cross-Modal Consistency and Multi-Temporal Granularity Collaboration
 This repository contains the official code for our AAAI-2025 paper "Dense Audio-Visual Event Localization under Cross-Modal Consistency and Multi-Temporal Granularity Collaboration". 
-[arvix page](https://arxiv.org/abs/2412.12628)
+
+[arXiv page](https://arxiv.org/abs/2412.12628)
 
 ## Requirements
 The implementation is based on PyTorch. Please follow [INSTALL.md](INSTALL.md) to install the required dependencies.
