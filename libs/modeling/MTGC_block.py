@@ -74,14 +74,13 @@ class MTGC_Block(nn.Module):
             if module.bias is not None:
                 torch.nn.init.constant_(module.bias, 0.)
 
-    def forward(self, fpn_feats, fpn_masks):
-        assert len(fpn_feats) == len(fpn_masks)
+    def forward(self, gra_feature, fpn_masks):
         out_features_list = tuple()
 #------------------------------------------C2F process-------------------------------------------------
-        for idx, (features, mask) in enumerate(zip(fpn_feats, fpn_masks)):
+        for idx, (features, mask) in enumerate(zip(gra_feature, fpn_masks)):
             if idx != (len(fpn_masks) - 1):
                 B, D, T = features.shape
-                linear_trans_features = self.C2F_linear[idx](fpn_feats[idx+1].view(B * D, -1)) #Zk+1 shape:[16*1024, 256/(2 ** (k+1))]->[16*1024, 256/(2 ** k)]
+                linear_trans_features = self.C2F_linear[idx](gra_feature[idx+1].view(B * D, -1)) #Zk+1 shape:[16*1024, 256/(2 ** (k+1))]->[16*1024, 256/(2 ** k)]
                 linear_trans_features = self.relu(linear_trans_features)
                 linear_trans_features = linear_trans_features.reshape(B, D, T)                 #shape: [16*1024, 256/(2 ** k)] -> [16, 1024, 256/(2 ** k)]
                 features, _ = self.C2F_attention(features, linear_trans_features, mask)        #shape: [16, 1024, 256/(2 ** k)]
