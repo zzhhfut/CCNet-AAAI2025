@@ -204,13 +204,11 @@ class CCNet_TCG_Backbone(nn.Module):
 
         out_feats_V = tuple()
         out_feats_A = tuple()
-        out_masks_V = tuple()
-        out_masks_A = tuple()
+        out_masks = tuple()
 
         out_feats_V += (x_Va + x_Va * gate_a, )
-        out_masks_V += (mask_V, )
+        out_masks += (mask_V, )
         out_feats_A += (x_Av + x_Av * gate_v, )
-        out_masks_A += (mask_A, )
 # ----------------------------------------------------------
 
         for idx in range(len(self.CMI_Visual)):
@@ -218,13 +216,12 @@ class CCNet_TCG_Backbone(nn.Module):
             x_V, mask_V = self.CMI_Visual[idx](out_feats_V[idx], out_feats_A[idx], mask_V)
             gate_a = self.audio_TCG[idx+1](out_feats_A[idx], out_feats_A[idx], mask_V)   #gate shape:[16, 1, 256/2**(idx+1)]
             out_feats_V += (x_V + x_V * gate_a,)                                         #output shape:[16, 512, 256/2**(idx+1)]
-            out_masks_V += (mask_V,)
+            out_masks += (mask_V,)
 # -----------------------------------------------------------------------------------------
 
 # -----------------------------------visual guide CMCC-------------------------------------
             x_A, mask_A = self.CMI_Audio[idx](out_feats_A[idx], out_feats_V[idx], mask_A)
             gate_v = self.visual_TCG[idx+1](out_feats_V[idx], out_feats_V[idx], mask_A)
             out_feats_A += (x_A + x_A * gate_v, )                                        #output shape:[16, 512, 256/2**(idx+1)]
-            out_masks_A += (mask_A, )
 # -----------------------------------------------------------------------------------------
-        return out_feats_V, out_feats_A, out_masks_V
+        return out_feats_V, out_feats_A, out_masks
