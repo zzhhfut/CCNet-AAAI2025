@@ -197,9 +197,9 @@ class CCNet_TCG_Backbone(nn.Module):
 #-----------------------first layer of CMCC------------------
         #x_V shape: [16, 512, 256], x_A shape: [16, 512, 256]
         x_Va, mask_V = self.ori_CMI_Visual(x_V, x_A, mask_V) #x_Va shape: [16, 512, 256]
-        x_Av, mask_A = self.ori_CMI_Audio(x_A, x_V, mask_A)  #x_Va shape: [16, 512, 256]
-
         gate_a = self.audio_TCG[0](x_A, x_A, mask_V)        #gate_a shape:[16, 1, 256]
+      
+        x_Av, mask_A = self.ori_CMI_Audio(x_A, x_V, mask_A)  #x_Va shape: [16, 512, 256]
         gate_v = self.visual_TCG[0](x_V, x_V, mask_A)       #gate_v shape:[16, 1, 256]
 
         out_feats_V = tuple()
