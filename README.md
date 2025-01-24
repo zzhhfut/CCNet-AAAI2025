@@ -31,7 +31,7 @@ python ./train.py ./configs/CCNet_unav100.yaml --output reproduce
 ```
 
 ## Evaluation
-Run ```eval.py``` to evaluate the trained model. You can download our pre-trained model from [this link](https://pan.baidu.com/s/1tLAf-H70ngRLGeC6lZho9g?pwd=5pcs)(pwd: 5pcs).
+Run ```eval.py``` to evaluate the trained model. You can download our pre-trained model from [this link](https://pan.baidu.com/s/1tLAf-H70ngRLGeC6lZho9g?pwd=5pcs)(pwd: 5pcs) or [this link](https://drive.google.com/file/d/11_kmeXwmMMZixh8TAJ2n1TRfRmZLm0UY/view?usp=sharing)(Google drive).
 ```
 python ./eval.py ./configs/CCNet_unav100.yaml ./ckpt/CCNet_unav100_reproduce
 ```
