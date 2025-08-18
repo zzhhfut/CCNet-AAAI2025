@@ -7,8 +7,8 @@ dataset: {
   max_seq_len: 256, 
 }
 model: {
-  input_dim_V: 2048, 
-  input_dim_A: 128, 
+  input_dim_V: 1536, 
+  input_dim_A: 1536, 
   class_aware: True, 
 }
 opt: {
